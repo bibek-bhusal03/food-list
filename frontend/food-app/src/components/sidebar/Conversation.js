@@ -12,9 +12,12 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 			`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className={`avatar `}>
+        <div className={`avatar`}>
           <div className="w-12 rounded-full">
-            <img src={conversation.profilePic} alt="user avatar" />
+            <img
+              src={"https://avatar.iran.liara.run/public/28"}
+              alt="user avatar"
+            />
           </div>
         </div>
 
