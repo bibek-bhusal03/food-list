@@ -1,0 +1,146 @@
+.no-gutters{
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: rgba(255, 255, 255, 0);
+}
+.brand-wrapper {
+  margin-bottom: 19px;
+}
+.brand-wrapper .logo {
+  height: 37px;
+}
+
+.login-card {
+  border: 2px solid #9ac205;
+  border-radius: 28px;
+  box-shadow: 10px 30px 40px 0 rgba(0, 0, 0, 0.43);
+  overflow: hidden;
+}
+.login-card-img {
+  border-radius: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.login-card .card-body {
+  padding: 85px 60px 60px;
+}
+@media (max-width: 422px) {
+  .login-card .card-body {
+    padding: 35px 24px;
+  }
+}
+.login-card-description {
+  position: relative;
+  display: block;
+  font-size: 25px;
+  color: #000;
+  font-weight: bold;
+  padding-bottom:18px;
+}
+ 
+.login-card-description:before{
+  position:absolute;
+  content:'';
+  left:0px;
+  bottom:0px;
+  width:80%;
+  height:3px;
+  background-color:#9ac205;
+}
+
+.login-card form {
+  max-width: 326px;
+}
+.login-card .form-control {
+  border: 1px solid #d5dae2;
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  min-height: 45px;
+  font-size: 13px;
+  /* line-height: 2; */
+  font-weight: normal;
+}
+.login-card .form-control::-webkit-input-placeholder {
+  color: #919aa3;
+}
+.login-card .form-control::-moz-placeholder {
+  color: #919aa3;
+}
+.login-card .form-control:-ms-input-placeholder {
+  color: #919aa3;
+}
+.login-card .form-control::-ms-input-placeholder {
+  color: #919aa3;
+}
+.login-card .form-control::placeholder {
+  color: #919aa3;
+}
+.btncolor {
+  background-color: #9ac205;
+  color: #fff;
+  margin-top: -40px;
+}
+
+.btnSignup {
+  background-color: #9ac205;
+  color: #fff;
+}
+.login-card .login-btn {
+  padding: 13px 20px 12px;
+  background-color: #000;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.login-card .login-btn:hover {
+  border: 1px solid #000;
+  background-color: #99c205a1;
+  color: #000;
+}
+.login-card .forgot-password-link {
+  color: #e20000;
+  margin-bottom: 12px;
+}
+
+.forgot-password-link:hover {
+  font-size: 18px;
+}
+
+.passwordEye {
+  vertical-align: middle;
+  margin-left: 300px;
+  margin-top: -110px;
+}
+.login-card-footer-text {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 60px;
+}
+.login-card-footer-text .text-reset {
+  font-size: 16px;
+  color: #9ac205 !important;
+  margin-bottom: 60px;
+}
+.text-reset:hover {
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+  .login-card-footer-text {
+    margin-bottom: 24px;
+  }
+}
+.login-card-footer-nav a {
+  font-size: 14px;
+  color: #919aa3;
+}
+
+
+.form-control:user-invalid{
+  border: 1.5px solid red;
+}

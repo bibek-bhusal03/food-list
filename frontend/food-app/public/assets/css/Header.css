@@ -1,0 +1,137 @@
+.bg {
+  background-color: #9ac205;
+}
+.logo {
+  color: #9ac205;
+}
+.navbar-nav {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item {
+  position: relative;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.nav-item::before,
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #9ac205; /* Adjust the underline color */
+  transition: width 0.3s ease; /* Adjust the transition duration and timing function */
+}
+
+.nav-item::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-item::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.nav-item:hover::before,
+.nav-item:hover::after {
+  width: 90%;
+}
+
+.nav-link {
+  color: #333; /* Adjust the color as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+
+.nav-link:hover {
+  color: #63f67e; /* Adjust the hover color as needed */
+}
+
+/* User Header */
+
+.userNav {
+  background-color: #99c205bb;
+  display: flex;
+}
+.userlogo {
+  color: white;
+}
+.userProfilelogo {
+  width: clamp(200px, 75%, 800px);
+  font-size: 30px;
+  text-align: right;
+  padding-top: 2px;
+}
+.profileBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.profileBtn:hover {
+  color: white;
+}
+.profileBtn:focus {
+  outline: none;
+}
+.profileBtn:active {
+  background-color: transparent;
+  border: none;
+}
+
+.profileBtn .profileBtnLogo {
+  border-radius: 50%;
+  border: 2px dotted white;
+  /* object-fit: cover; */
+}
+
+
+
+/* Card Nutritionist */
+.cardNutritionistDashboard {
+    max-width: 500px;
+    margin: 15px 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(96, 97, 97, 0.8);
+    background: linear-gradient(45deg, #6a6c6e, #828486, #a2a5a7, #cacecf);
+    border-radius: 20px;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+    text-align: left; /* Align text to the left */
+    display: flex; /* Use flexbox for layout */
+    align-items: flex-start;
+  }
+  
+  .cardNutritionistDashboard:hover {
+    transform: scale(1.05);
+  }
+  
+  .cardNutritionistDashboard img {
+    max-width: 200px; /* Set max width for the image */
+    width:70px;
+    height: 70px;
+    border-radius: 50%; /* Apply border radius to image */
+    margin-right: 20px; /* Add spacing between image and text */
+  }
+  
+  .cardNutritionistDashboard-details {
+    display: flex;
+    flex-direction: column; /* Stack details below each other */
+  }
+  
+  .cardNutritionistDashboard h3 {
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  
+  .cardNutritionistDashboard p {
+    color: #ffffff;
+    margin: 8px 0;
+  }
+  
+  .cardNutritionistDashboard b {
+    color: #000000;
+  }

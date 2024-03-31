@@ -1,0 +1,35 @@
+/* Add this CSS to your styles file, or in a style tag in your component */
+
+.section_heading h3 {
+  color: #333; /* Change color as per your design */
+}
+
+.faq-accordian .card {
+  margin-bottom: 20px;
+}
+
+.faq-accordian .card-header {
+  background-color: #99c205bd; /* Change background color of the question div */
+  padding: 15px;
+  cursor: pointer;
+}
+.faq-accordian .card-header:hover {
+  background-color: #99c20587; /* Change background color of the question div */
+}
+
+.faq-accordian .card-body {
+  padding: 15px;
+}
+
+.support-button {
+  margin-top: 20px; /* Add margin above the support button */
+}
+
+.support-button a {
+  color: #6ea117; /* Change color as per your design */
+}
+
+.faqImage {
+  width: 100%;
+  height: 100%;
+}
