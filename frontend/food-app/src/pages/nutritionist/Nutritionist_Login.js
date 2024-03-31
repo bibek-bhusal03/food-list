@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
 import loginimg from "../../images/login.jpg";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import useLoggedInUser from "../../zustand/useLoggedInUser";
 
 export default function Nutritionist_Login() {
   const scrollToTop = () => {
@@ -22,7 +23,7 @@ export default function Nutritionist_Login() {
   });
 
   const navigate = useNavigate();
-
+  const { setLoggedInUser } = useLoggedInUser();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -40,7 +41,8 @@ export default function Nutritionist_Login() {
         formData
       );
       console.log(response.data);
-      const token = response.data.Token; // Adjust this based on the actual structure
+             const { firstName, image, _id, token } =
+               response?.data?.user || {};
       localStorage.setItem("Nutritionist_token", token);
       localStorage.setItem(
         "Nutritionist_Username",
@@ -49,6 +51,17 @@ export default function Nutritionist_Login() {
       localStorage.setItem("NutritionistID", response.data.user._id);
       localStorage.setItem("NutritionistLoggedIn", true);
       localStorage.setItem("Nutritionistrole", "Nutritionist");
+        
+      setLoggedInUser({
+        _id,
+        image,
+        firstName,
+        token,
+        NutritionistLoggedIn: true,
+      });
+
+
+
       navigate("/consultantDashboard");
       toast.success("Login Successfully!");
     } catch (error) {

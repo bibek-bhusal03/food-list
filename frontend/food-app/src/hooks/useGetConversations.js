@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 const useGetConversations = () => {
   const [loading, setLoading] = useState(false);
@@ -14,10 +14,12 @@ const useGetConversations = () => {
             `http://localhost:8000/api/sidebarUsers/${userId}/${userRole}`
           );
           const data = await res.json();
+          
           console.log("data", data);
           if (data.error) {
             throw new Error(data.error);
           }
+
           setConversations(data);
         } catch (error) {
           toast.error(error.message);
@@ -33,13 +35,17 @@ const useGetConversations = () => {
         setLoading(true);
         try {
           const res = await fetch(
-            `http://localhost:8000/sidebar-users/:${userId}/:${userrole}`
+            `http://localhost:8000/api/sidebarUsers/${userId}/${userrole}`
           );
           const data = await res.json();
+          console.log("debug ",data)
+
           if (data.error) {
             throw new Error(data.error);
           }
-          setConversations(data.user);
+          setConversations(data);// 
+          
+
         } catch (error) {
           toast.error(error.message);
         } finally {

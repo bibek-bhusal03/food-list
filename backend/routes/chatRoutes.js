@@ -9,28 +9,30 @@ const router = Router();
 router.get("/sidebarUsers/:userId/:userRole", async (req, res) => {
   try {
     let filteredUsers;
-
+    
     if (req.params.userRole === "User") {
       console.log("user userRole", req.params.userRole);
       filteredUsers = await Request.find({
         user: req.params.userId, // Use _id for consistency
         status: "accepted",
       })
-        .populate("nutritionist")
+        .populate(["nutritionist", "user"])
         .select("-password -__v"); // Exclude password and version field
+      const nutritionist = filteredUsers.map((user) => user.nutritionist);
+      return res.json(nutritionist); // Use default 200 status for success
     } else {
       console.log("user role", req.params.userRole);
       filteredUsers = await Request.find({
         nutritionist: req.params.userId, // Use _id for consistency
         status: "accepted",
       })
-        .populate("user")
+        .populate(["user", "nutritionist"])
         .select("-password -__v"); // Exclude password and version field
       console.log("filteredUsers", filteredUsers);
+        const users = filteredUsers.map((user) => user.user);
+        res.json(users); 
     }
-    const nutritionist = filteredUsers.map((user) => user.nutritionist);
-    console.log("nutritionist", nutritionist);
-    res.json(nutritionist); // Use default 200 status for success
+  // Use default 200 status for success
   } catch (error) {
     console.error("Error in getUsersForSidebar:", error.message);
     // Consider providing a more informative error message:
@@ -39,12 +41,12 @@ router.get("/sidebarUsers/:userId/:userRole", async (req, res) => {
 });
 
 router.post(
-  "send/:selectedconversation_id/:sender_id",
-  verifyToken,
+  "/send/:selectedconversation_id/:sender_id",
+
   async (req, res) => {
     try {
       const { message } = req.body;
-      const { id: receiverId } = req.params.selectedconversation_id;
+      const receiverId = req.params.selectedconversation_id;
       const senderId = req.params.sender_id;
 
       let conversation = await Conversation.findOne({
@@ -73,12 +75,15 @@ router.post(
       // this will run in parallel
       await Promise.all([conversation.save(), newMessage.save()]);
 
-      // SOCKET IO FUNCTIONALITY WILL GO HERE
-      const receiverSocketId = getReceiverSocketId(receiverId);
-      if (receiverSocketId) {
-        // io.to(<socket_id>).emit() used to send events to specific client
-        io.to(receiverSocketId).emit("newMessage", newMessage);
-      }
+
+      // thik xa yo sabai code ?
+
+      // // SOCKET IO FUNCTIONALITY WILL GO HERE
+      // const receiverSocketId = getReceiverSocketId(receiverId);
+      // if (receiverSocketId) {
+      //   // io.to(<socket_id>).emit() used to send events to specific client
+      //   io.to(receiverSocketId).emit("newMessage", newMessage);
+      // }
 
       res.status(201).json(newMessage);
     } catch (error) {

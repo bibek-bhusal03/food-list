@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
 import loginimg from "../../images/login.jpg";
+import useLoggedInUser from "../../zustand/useLoggedInUser";
 
 export default function Login() {
   const scrollToTop = () => {
@@ -22,7 +23,7 @@ export default function Login() {
   });
 
   const navigate = useNavigate();
-
+  const { setLoggedInUser } = useLoggedInUser();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -39,14 +40,24 @@ export default function Login() {
         "http://localhost:8000/api/login",
         formData
       );
+      const { firstName, image, _id, token } = response?.data?.user || {};
+
       console.log(response.data);
-      const token = response.data.Token; // Adjust this based on the actual structure
       localStorage.setItem("User_token", token);
       localStorage.setItem("Username", response.data.user.firstName);
       localStorage.setItem("UserID", response.data.user._id);
       localStorage.setItem("UserLoggedIn", true);
       localStorage.setItem("Userrole", "User");
-      localStorage.setItem("ProfilePic", response.data.user.profilePic);
+      localStorage.setItem("ProfilePic", response.data.user.image);
+
+
+      setLoggedInUser({
+        _id,
+        image,
+        firstName,
+        token,
+      });
+
       navigate("/userDashboard");
       toast.success("Login Successfully!");
     } catch (error) {
